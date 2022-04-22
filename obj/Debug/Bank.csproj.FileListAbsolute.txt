@@ -1,0 +1,17 @@
+E:\Szkola\Bank\bin\Debug\Bank.exe.config
+E:\Szkola\Bank\bin\Debug\Bank.exe
+E:\Szkola\Bank\bin\Debug\Bank.pdb
+E:\Szkola\Bank\obj\Debug\Bank.csproj.AssemblyReference.cache
+E:\Szkola\Bank\obj\Debug\Bank.csproj.SuggestedBindingRedirects.cache
+E:\Szkola\Bank\obj\Debug\MainWindow.g.cs
+E:\Szkola\Bank\obj\Debug\App.g.cs
+E:\Szkola\Bank\obj\Debug\Bank_MarkupCompile.cache
+E:\Szkola\Bank\obj\Debug\MainWindow.baml
+E:\Szkola\Bank\obj\Debug\Bank.g.resources
+E:\Szkola\Bank\obj\Debug\Bank.Properties.Resources.resources
+E:\Szkola\Bank\obj\Debug\Bank.csproj.GenerateResource.cache
+E:\Szkola\Bank\obj\Debug\Bank.csproj.CoreCompileInputs.cache
+E:\Szkola\Bank\obj\Debug\Bank.exe
+E:\Szkola\Bank\obj\Debug\Bank.pdb
+E:\Szkola\Bank\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Szkola\Bank\obj\Debug\Bank_MarkupCompile.lref
