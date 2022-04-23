@@ -5,7 +5,11 @@ namespace Bank.Commands
 {
     public abstract class CommandBase : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public virtual bool CanExecute(object parameter)
         {
@@ -16,7 +20,8 @@ namespace Bank.Commands
 
         protected void OnCanExecutedChanged()
         {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
+            //CanExecuteChanged?.Invoke(this, new EventArgs());
+            CommandManager.InvalidateRequerySuggested();
         }
     }
 }

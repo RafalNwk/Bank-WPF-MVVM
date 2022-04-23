@@ -12,12 +12,13 @@ namespace Bank.Models
             rodzajKonta.Add(new RodzajKonta("Standard", 3.0f));
             rodzajKonta.Add(new RodzajKonta("Premium", 5.0f));
             rodzajKonta.Add(new RodzajKonta("Platinium", 8.0f));
-            NoweKonto("Konto Pierwsze", 1000, rodzajKonta[0]);
-            NoweKonto("Konto Oszczędnościowe", 1500, rodzajKonta[1]);
+            konta.Add(new Konto("Konto Pierwsze", rodzajKonta[0]));
+            konta.Add(new Konto("Konto Drugie", rodzajKonta[0]));
+            Wplata(1, 100);
         }
-        public void NoweKonto(string nazwa, float stanKonta, RodzajKonta rodzaj)
+        public void NoweKonto(string nazwa, RodzajKonta rodzaj)
         {
-            konta.Add(new Konto(nazwa, stanKonta, rodzaj));
+            konta.Add(new Konto(nazwa, rodzaj));
             int ID = konta.Last().id;
             //MessageBox.Show($"Stworzono konto {nazwa}, ID: {ID} Stan konta: {stanKonta}  Rodzaj konta: {rodzaj.Nazwa}");
         }
@@ -31,7 +32,7 @@ namespace Bank.Models
         }
         public void DoliczOprocentowanie(int id)
         {
-            konta.Find(x => x.id == id).saldoKonta += (konta.Find(x => x.id == id).saldoKonta) * (konta.Find(x => x.id == id).WybranyRodzajKonta.Oprocentowanie/100);
+            konta.Find(x => x.id == id).saldoKonta += (konta.Find(x => x.id == id).saldoKonta) * (konta.Find(x => x.id == id).WybranyRodzajKonta.Oprocentowanie / 100);
         }
     }
 

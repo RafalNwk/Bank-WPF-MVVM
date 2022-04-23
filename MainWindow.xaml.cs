@@ -11,6 +11,7 @@ namespace Bank
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowModel();
         }
     }
 }

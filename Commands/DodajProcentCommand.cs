@@ -4,15 +4,24 @@ namespace Bank.Commands
 {
     public class DodajProcentCommand : CommandBase
     {
-        private readonly MainViewModel mainViewModel;
-        public DodajProcentCommand(MainViewModel mainViewModel)
+        private readonly HomeViewModel homeViewModel;
+        public DodajProcentCommand(HomeViewModel mainViewModel)
         {
-            this.mainViewModel = mainViewModel;
+            this.homeViewModel = mainViewModel;
+        }
+        public override bool CanExecute(object parameter)
+        {
+            if (homeViewModel.SelectedKonto != null)
+            {
+                if (homeViewModel.SelectedKonto.saldoKonta > 0) return true;
+            }
+
+            return false;
         }
         public override void Execute(object parameter)
         {
-            mainViewModel.bankk.DoliczOprocentowanie(mainViewModel.SelectedKonto.id);
-            mainViewModel.SaldoKontaChanged();
+            homeViewModel.bankk.DoliczOprocentowanie(homeViewModel.SelectedKonto.id);
+            homeViewModel.SaldoKontaChanged();
         }
     }
 }

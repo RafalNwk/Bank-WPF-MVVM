@@ -6,24 +6,28 @@ namespace Bank.Commands
 {
     public class WplacCommand : CommandBase
     {
-        private readonly MainViewModel mainViewModel;
-        public WplacCommand(MainViewModel mainViewModel)
+        private readonly HomeViewModel homeViewModel;
+        public WplacCommand(HomeViewModel homeViewModel)
         {
-            this.mainViewModel = mainViewModel;
+            this.homeViewModel = homeViewModel;
+        }
+        public override bool CanExecute(object parameter)
+        {
+            if (homeViewModel.SelectedKonto != null) return true;
+            return false;
         }
         public override void Execute(object parameter)
         {
-            float piniadz = 0;
-            bool x = float.TryParse(Interaction.InputBox("Podaj kwotę którą chcesz wpłacić:", "Wpłata", "100"), out piniadz);
+            bool x = float.TryParse(Interaction.InputBox("Podaj kwotę którą chcesz wpłacić:", "Wpłata", "100"), out float piniadz);
             if (x && piniadz != 0)
             {
-                mainViewModel.bankk.Wplata(mainViewModel.SelectedKonto.id, piniadz);
-                mainViewModel.SaldoKontaChanged();
-                MessageBox.Show($"Udało się wpłacić {piniadz}PLN. Twój aktualny stan konta: {mainViewModel.SaldoKonta.ToString()}PLN");
+                homeViewModel.bankk.Wplata(homeViewModel.SelectedKonto.id, piniadz);
+                homeViewModel.SaldoKontaChanged();
+                MessageBox.Show($"Udało się wpłacić {piniadz.ToString("n2")}PLN. Twój aktualny stan konta: {homeViewModel.SaldoKonta}PLN");
             }
             else
             {
-                if(x && piniadz == 0) MessageBox.Show($"Kwota musi być różna od zera");
+                if (x && piniadz == 0) MessageBox.Show($"Kwota musi być różna od zera");
                 else MessageBox.Show($"Nie udało się dokonać wpłaty.");
             }
         }

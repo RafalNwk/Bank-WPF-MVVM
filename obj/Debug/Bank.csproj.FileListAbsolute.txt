@@ -13,5 +13,12 @@ E:\Szkola\Bank\obj\Debug\Bank.csproj.GenerateResource.cache
 E:\Szkola\Bank\obj\Debug\Bank.csproj.CoreCompileInputs.cache
 E:\Szkola\Bank\obj\Debug\Bank.exe
 E:\Szkola\Bank\obj\Debug\Bank.pdb
-E:\Szkola\Bank\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\Szkola\Bank\obj\Debug\Bank_MarkupCompile.lref
+E:\Szkola\Bank\obj\Debug\Views\HomeView.baml
+E:\Szkola\Bank\obj\Debug\Views\HomeView.g.cs
+E:\Szkola\Bank\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Szkola\Bank\obj\Debug\App.baml
+E:\Szkola\Bank\obj\Debug\Views\NoweKontoView.g.cs
+E:\Szkola\Bank\obj\Debug\Views\NoweKontoView.baml
+E:\Szkola\Bank\obj\Debug\Views\PrzelewyView.g.cs
+E:\Szkola\Bank\obj\Debug\Views\PrzelewyView.baml

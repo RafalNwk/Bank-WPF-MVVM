@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Bank.Views.PrzelewyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:Bank.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:PrzelewyViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="240" Width="500">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock FontSize="17" Text="Wybierz konto: " Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox Margin="10 0 0 0" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Height="30" Width="250" HorizontalAlignment="Left" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding KontoList}"
+                SelectedValue="{Binding SelectedKontoZ}"
+                SelectedItem="{Binding SelectedKontoZItem}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="17" Text="{Binding nazwa}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock FontSize="17" Text="Wybierz konto docelowe: " Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox Margin="10 0 0 0" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Height="30" Width="250" HorizontalAlignment="Left" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding KontoList}"
+                SelectedValue="{Binding SelectedKontoDo}"
+                SelectedItem="{Binding SelectedKontoDoItem}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="17" Text="{Binding nazwa}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock FontSize="17" Text="Podaj kwotę przelewu: " Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0" FontSize="17" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="250"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalAlignment="Center">
+            <Button Command="{Binding WykonajPrzelew}" Height="30" Width="110" Content="Przelej" HorizontalAlignment="Center" FontSize="17" Margin="10 0 0 0"/>
+            <Button Command="{Binding UpdateView}" CommandParameter="Home" Height="30" Width="110" Content="Anuluj" HorizontalAlignment="Left" FontSize="17" Margin="20 0 0 0"/>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

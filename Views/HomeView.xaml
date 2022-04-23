@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Bank.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:Bank.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="240" Width="506">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="Auto" MinWidth="200"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="WybraneKonto" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Height="30" Width="250" HorizontalAlignment="Left" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding KontoList}"
+                SelectedValue="{Binding SelectedKonto}"
+                SelectedItem="{Binding SelectedKontoItem}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="17" Text="{Binding nazwa}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Command="{Binding UpdateView}" CommandParameter="NoweKonto" Grid.Column="3" Grid.Row="1" Height="30" Width="100" Content="Dodaj konto" HorizontalAlignment="Left" FontSize="17" Margin="15 0 0 0"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalAlignment="Center" >
+            <TextBlock Text="Nazwa konta: " FontSize="18"/>
+            <TextBlock x:Name="WybraneNazwaKonta" Text="{Binding SelectedKonto.nazwa}" FontSize="18"/>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="15 0 0 0">
+            <TextBlock Text="ID: " FontSize="18"/>
+            <TextBlock x:Name="WybraneID" Text="{Binding SelectedKonto.id}" FontSize="18"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalAlignment="Center">
+            <TextBlock Text="Rodzaj konta: " FontSize="18"/>
+            <TextBlock x:Name="WybraneRodzajKonta" Text="{Binding SelectedKonto.WybranyRodzajKonta.Nazwa}" FontSize="18"/>
+        </StackPanel>
+        <Button Command="{Binding DodajProcenty}"  Grid.Column="3" Grid.Row="3" Height="30" Width="100" HorizontalAlignment="Left" Content="Dodaj %" FontSize="17" Margin="15 0 0 0"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalAlignment="Center">
+            <TextBlock Text="Saldo konta: " FontSize="18"/>
+            <TextBlock x:Name="WybraneSaldo" Text="{Binding SaldoKonta}" FontSize="18"/>
+            <TextBlock Text="PLN" FontSize="18"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalAlignment="Center">
+            <Button Command="{Binding Wplata}" Height="30" Width="100" Content="Wpłać" HorizontalAlignment="Center" FontSize="17" Margin="10 0 0 0"/>
+            <Button Command="{Binding Wyplata}" Height="30" Width="100" Content="Wypłać" HorizontalAlignment="Left" FontSize="17" Margin="20 0 0 0"/>
+            <Button Command="{Binding UpdateView}" CommandParameter="Przelewy" Height="30" Width="100" Content="Przelej" HorizontalAlignment="Left" FontSize="17" Margin="20 0 0 0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
